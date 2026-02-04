@@ -1,352 +1,649 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Rolex — Swiss Made Excellence</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="web.css">
-    <style>
-      :root{
-        --black:#000000f1;
-        --green:#006039; 
-        --gold:#A37E2C;  
-        --white:#ffffff;
-        --muted:#f2f2f2;
-        --glass: rgba(188, 3, 3, 0.06);
-        --radius:12px;
-        --gap:1rem;
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Rolex — Swiss Made Excellence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="web.css">
+  <style>
+    :root {
+      --black: #000000f1;
+      --green: #006039;
+      --gold: #A37E2C;
+      --white: #ffffff;
+      --muted: #f2f2f2;
+      --glass: rgba(188, 3, 3, 0.06);
+      --radius: 12px;
+      --gap: 1rem;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', system-ui, 'Segoe UI', Roboto, Arial;
+      color: var(--black);
+      background: linear-gradient(180deg, #fff #fbfbfb 40%, #f5f5f5);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(0, 96, 57, 0.92), rgba(0, 48, 28, 0.95));
+      color: var(--white);
+      padding: .6rem 1rem;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: .6rem
+    }
+
+    .logo-wrap .rot-video {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex: 0 0 48px
+    }
+
+    .logo-wrap h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      margin: 0;
+      font-weight: 700
+    }
+
+
+    nav.main-nav {
+      flex: 1;
+      display: flex;
+      justify-content: center
+    }
+
+    nav.main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: .5rem;
+      padding: 0;
+      margin: 0
+    }
+
+    nav.main-nav a {
+      color: var(--white);
+      text-decoration: none;
+      padding: .45rem .65rem;
+      border-radius: 999px;
+      font-weight: 600;
+      opacity: .95
+    }
+
+    nav.main-nav a:hover {
+      box-shadow: 0 6px 18px rgba(0, 96, 57, 0.12);
+      background: rgba(0, 96, 57, 0.07);
+      color: var(--green)
+    }
+
+
+
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      height: 60vh;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: scale(1.02)
+    }
+
+    .hero .overlay {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      text-align: center;
+      color: var(--white);
+      max-width: 1100px
+    }
+
+    .hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin: .2rem 0
+    }
+
+    .hero p {
+      opacity: .9;
+      margin: .5rem 0;
+      color: #e9e7e2
+    }
+
+    .hero .btn {
+      display: inline-block;
+      margin-top: .6rem;
+      background: var(--gold);
+      color: var(--black);
+      padding: .7rem 1.1rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700
+    }
+
+    .hero .btn {
+      display: inline-block;
+      margin-top: .6rem;
+      background: var(--green);
+      color: var(--white);
+      padding: .7rem 1.1rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5));
+      z-index: 1
+    }
+
+
+    .hero[data-parallax="true"] video {
+      transform-origin: center center;
+      transition: transform .12s linear
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem
+    }
+
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1rem
+    }
+
+    .card-watch {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 18px rgba(3, 3, 3, 0.06);
+      transition: transform .25s ease, box-shadow .25s ease
+    }
+
+    .card-watch img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block
+    }
+
+    .card-body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem
+    }
+
+    .model {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700
+    }
+
+    .price {
+      color: var(--gold);
+      font-weight: 800
+    }
+
+    .card-actions {
+      margin-top: auto;
+      display: flex;
+      gap: .5rem
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: .45rem .7rem;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--black)
+    }
+
+    .card-watch:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 26px 60px rgba(1, 1, 1, 0.12)
+    }
+
+    .card-watch:hover img {
+      filter: brightness(1.02) saturate(1.05);
+    }
+
+
+    .card-watch:focus-within,
+    .card-watch:hover {
+      outline: 3px solid rgba(212, 175, 55, 0.08)
+    }
+
+    .card-watch:focus-within,
+    .card-watch:hover {
+      outline: 3px solid rgba(163, 126, 44, 0.08)
+    }
+
+    .collections {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem
+    }
+
+    .col-card {
+      position: relative;
+      flex: 1 1 220px;
+      height: 140px;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      color: var(--white)
+    }
+
+    .col-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(.95) brightness(.7)
+    }
+
+    .col-card .label {
+      position: relative;
+      padding: 1rem;
+      font-weight: 700;
+      z-index: 2
+    }
+
+
+    footer.site-footer {
+      background: #006039;
+      color: #ddd;
+      padding: 1.25rem 0;
+      margin-top: 2rem
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem
+    }
+
+    .socials {
+      display: flex;
+      gap: .6rem
+    }
+
+    .socials a {
+      color: var(--white);
+      text-decoration: none;
+      padding: .35rem;
+      border-radius: 6px
+    }
+
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: none
+    }
+
+
+    @media(min-width:700px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr)
       }
 
-      *{box-sizing:border-box}
-      html,body{height:100%}
-      body{
-        margin:0;
-        font-family: 'Montserrat', system-ui,  'Segoe UI', Roboto, Arial;
-        color:var(--black);
-        background:linear-gradient(180deg,#fff #fbfbfb 40%, #f5f5f5);
-        -webkit-font-smoothing:antialiased;
-        -moz-osx-font-smoothing:grayscale;
-        overflow-x:hidden;
+      .hero h2 {
+        font-size: 2.4rem
+      }
+    }
+
+    @media(min-width:1000px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr)
       }
 
-    
-      header.site-header{
-        position:sticky; top:0; z-index:60;
-        backdrop-filter: blur(6px);
-        background: linear-gradient(180deg, rgba(0,96,57,0.92), rgba(0,48,28,0.95));
-        color:var(--white);
-        padding:.6rem 1rem;
-      }
-      .header-inner{display:flex;align-items:center;gap:1rem;max-width:1200px;margin:0 auto}
-      .logo-wrap{display:flex;align-items:center;gap:.6rem}
-      .logo-wrap .rot-video{width:48px;height:48px;border-radius:8px;overflow:hidden;flex:0 0 48px}
-      .logo-wrap h1{font-family:'Playfair Display',serif;font-size:1.05rem;margin:0;font-weight:700}
-
-  
-      nav.main-nav{flex:1;display:flex;justify-content:center}
-      nav.main-nav ul{list-style:none;display:flex;gap:.5rem;padding:0;margin:0}
-      nav.main-nav a{color:var(--white);text-decoration:none;padding:.45rem .65rem;border-radius:999px;font-weight:600;opacity:.95}
-      nav.main-nav a:hover{box-shadow:0 6px 18px rgba(0,96,57,0.12); background:rgba(0,96,57,0.07); color:var(--green)}
-
-     
-     
-   
-      .hero{
-        position:relative;overflow:hidden;height:60vh;min-height:360px;display:flex;align-items:center;justify-content:center;
-      }
-      .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transform:scale(1.02)}
-      .hero .overlay{position:relative;z-index:2;padding:2rem;text-align:center;color:var(--white);max-width:1100px}
-      .hero h2{font-family:'Playfair Display',serif;font-size:2rem;margin:.2rem 0}
-      .hero p{opacity:.9;margin:.5rem 0;color:#e9e7e2}
-      .hero .btn{display:inline-block;margin-top:.6rem;background:var(--gold);color:var(--black);padding:.7rem 1.1rem;border-radius:10px;text-decoration:none;font-weight:700}
-      .hero .btn{display:inline-block;margin-top:.6rem;background:var(--green);color:var(--white);padding:.7rem 1.1rem;border-radius:10px;text-decoration:none;font-weight:700}
-      .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.5));z-index:1}
-
-    
-      .hero[data-parallax="true"] video{transform-origin:center center;transition:transform .12s linear}
-
-      .container{max-width:1200px;margin:0 auto;padding:1rem}
-
-     
-      .gallery{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
-      .card-watch{background:var(--white);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 18px rgba(3,3,3,0.06);transition:transform .25s ease,box-shadow .25s ease}
-      .card-watch img{width:100%;height:220px;object-fit:cover;display:block}
-      .card-body{padding:1rem;display:flex;flex-direction:column;gap:.5rem}
-      .model{font-family:'Playfair Display',serif;font-weight:700}
-      .price{color:var(--gold);font-weight:800}
-      .card-actions{margin-top:auto;display:flex;gap:.5rem}
-      .btn-outline{border:1px solid rgba(0,0,0,0.06);padding:.45rem .7rem;border-radius:8px;text-decoration:none;color:var(--black)}
-
-      .card-watch:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(1,1,1,0.12)}
-      .card-watch:hover img{filter:brightness(1.02) saturate(1.05);}
-
- 
-      .card-watch:focus-within, .card-watch:hover{outline:3px solid rgba(212,175,55,0.08)}
-      .card-watch:focus-within, .card-watch:hover{outline:3px solid rgba(163,126,44,0.08)}
-
-      .collections{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem}
-      .col-card{position:relative;flex:1 1 220px;height:140px;border-radius:12px;overflow:hidden;display:flex;align-items:flex-end;color:var(--white)}
-      .col-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(.95) brightness(.7)}
-      .col-card .label{position:relative;padding:1rem;font-weight:700;z-index:2}
-
-  
-      footer.site-footer{background:	#006039;color:#ddd;padding:1.25rem 0;margin-top:2rem}
-      .footer-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;padding:0 1rem}
-      .socials{display:flex;gap:.6rem}
-      .socials a{color:var(--white);text-decoration:none;padding:.35rem;border-radius:6px}
-
-     
-      .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
-      .reveal.in-view{opacity:1;transform:none}
-
-     
-      @media(min-width:700px){
-        .gallery{grid-template-columns:repeat(2,1fr)}
-        .hero h2{font-size:2.4rem}
-      }
-      @media(min-width:1000px){
-        .gallery{grid-template-columns:repeat(3,1fr)}
-        .hero{height:72vh}
-        .logo-wrap h1{font-size:1.2rem}
+      .hero {
+        height: 72vh
       }
 
-      
-      a:focus{outline:3px solid rgba(212,175,55,0.12);outline-offset:3px}
-    </style>
-  </head>
-  <body>
+      .logo-wrap h1 {
+        font-size: 1.2rem
+      }
+    }
 
-   
-    <header class="site-header">
-      <div class="header-inner">
-        <div class="logo-wrap">
-          <div class="rot-video">
-            
-            <video muted autoplay src="logo3.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover" aria-hidden="true"></video>
-          </div>
-          <h1>Rolex</h1>
+
+    a:focus {
+      outline: 3px solid rgba(212, 175, 55, 0.12);
+      outline-offset: 3px
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <div class="rot-video">
+
+          <video muted autoplay src="logo3.mp4" autoplay muted loop playsinline
+            style="width:100%;height:100%;object-fit:cover" aria-hidden="true"></video>
         </div>
-
-        <nav class="main-nav" aria-label="Main navigation">
-          <ul>
-            <li><a href="#home">Inicio</a></li>
-            <li><a href="#relojes">Relojes</a></li>
-            <li><a href="#submariner">Novedades</a></li>
-            <li><a href="#daytona">Accesorios</a></li>
-            <li><a href="#contacto">Deportes</a></li>
-          </ul>
-        </nav>
-
-        <div style="display:flex;gap:.6rem;align-items:center">
-          <a class="cta-buy" href="#comprar">Reservar</a>
-        </div>
+        <h1>Rolex</h1>
       </div>
-    </header>
 
-   
-    <section class="hero" id="home" data-parallax="true">
-      <video id="heroVideo" src="rolex.mp4" autoplay muted loop playsinline poster="assets/hero-poster.jpg" aria-hidden="true"></video>
-      <div class="overlay">
-        <h2>Swiss Made Excellence</h2>
-        <p class="muted">Colección icónica. Diseño que trasciende generaciones.</p>
-        <a class="btn" href="#relojes">Descubre la Colección</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#home">Inicio</a></li>
+          <li><a href="#relojes">Relojes</a></li>
+          <li><a href="#submariner">Novedades</a></li>
+          <li><a href="#daytona">Accesorios</a></li>
+          <li><a href="#contacto">Deportes</a></li>
+        </ul>
+      </nav>
+
+      <div style="display:flex;gap:.6rem;align-items:center">
+        <a class="cta-buy" href="#comprar">Reservar</a>
+      </div>
+    </div>
+  </header>
+
+
+  <section class="hero" id="home" data-parallax="true">
+    <video id="heroVideo" src="rolex.mp4" autoplay muted loop playsinline poster="assets/hero-poster.jpg"
+      aria-hidden="true"></video>
+    <div class="overlay">
+      <h2>Swiss Made Excellence</h2>
+      <p class="muted">Colección icónica. Diseño que trasciende generaciones.</p>
+      <a class="btn" href="#relojes">Descubre la Colección</a>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section id="relojes" class="reveal">
+      <h3 style="font-family:'Playfair Display',serif;margin:0 0 .6rem">Modelos más vendidos</h3>
+      <div class="gallery">
+
+        <article class="card-watch">
+          <img
+            src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_900/v1/catalogue/2025/upright-c/m126610ln-0001.jpg"
+            alt="Rolex Submariner">
+          <div class="card-body">
+            <div class="model">Submariner</div>
+            <div class="price">8,100€</div>
+            <div class="card-actions"><a class="btn-outline" href="#submariner">Ver Detalles</a></div>
+          </div>
+        </article>
+
+
+        <article class="card-watch">
+          <img
+            src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7/c_limit,w_1920/v1/catalogue/2025/upright-c/m52508-0007"
+            alt="Rolex Daytona">
+          <div class="card-body">
+            <div class="model">1908</div>
+            <div class="price">12,500€</div>
+            <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
+          </div>
+        </article>
+        <article class="card-watch">
+          <img
+            src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m126284rbr-0013.jpg"
+            alt="Rolex Daytona">
+          <div class="card-body">
+            <div class="model">Datejust 36</div>
+            <div class="price">18,500€</div>
+            <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
+          </div>
+        </article>
+        <article class="card-watch">
+          <img
+            src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m128348rbr-0036.jpg"
+            alt="Rolex Daytona">
+          <div class="card-body">
+            <div class="model">Green lantern</div>
+            <div class="price">22,000€</div>
+            <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
+          </div>
+        </article>
+
+        <article class="card-watch">
+          <img src="https://images-cdn.ubuy.co.in/686ab4c497f0178e430a3403-pre-owned-rolex-6917-ladies-26mm.jpg"
+            alt="Datejust">
+          <div class="card-body">
+            <div class="model">Demon</div>
+            <div class="price">32,800€</div>
+            <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
+          </div>
+        </article>
+
+        <article class="card-watch">
+          <img
+            src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m128238-0088.jpg"
+            alt="Oister">
+          <div class="card-body">
+            <div class="model">Date time</div>
+            <div class="price">19,500€</div>
+            <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
+          </div>
+        </article>
+
+        <article class="card-watch">
+          <img
+            src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m336239-0003.jpg"
+            alt="Sky luxury">
+          <div class="card-body">
+            <div class="model">Sky luxury</div>
+            <div class="price">38,200€</div>
+            <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
+          </div>
+        </article>
+        <article class="card-watch">
+          <img
+            src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7/c_limit,w_1920/v1/catalogue/2025/upright-c/m126518ln-0014">
+          <div class="card-body">
+            <div class="model">Cosmograph</div>
+            <div class="price">22,500€</div>
+            <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
+          </div>
+        </article>
+
+
+
+
+
+
+
+        <article class="card-watch">
+          <img
+            src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1200/v1/catalogue/2025/upright-c/m126300-0011"
+            alt="Rolex Datejust">
+          <div class="card-body">
+            <div class="model">Datejust</div>
+            <div class="price">8000€</div>
+            <div class="card-actions"><a class="btn-outline" href="#datejust">Ver Detalles</a></div>
+          </div>
+        </article>
+
+
+        <article class="card-watch">
+          <img
+            src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m126710blro-0001.jpg"
+            alt="Rolex GMT-Master">
+          <div class="card-body">
+            <div class="model">GMT-Master</div>
+            <div class="price">11,000€</div>
+            <div class="card-actions"><a class="btn-outline" href="#gmt">Ver Detalles</a></div>
+          </div>
+        </article>
+
+
+        <article class="card-watch">
+          <img
+            src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m126655-0005.jpg"
+            alt="Rolex Yacht-Master">
+          <div class="card-body">
+            <div class="model">Yacht-Master</div>
+            <div class="price">14,000€</div>
+            <div class="card-actions"><a class="btn-outline" href="#yacht">Ver Detalles</a></div>
+          </div>
+        </article>
+
+
+        <article class="card-watch">
+          <img
+            src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7/c_limit,w_1920/v1/catalogue/2025/upright-c/m136668lb-0001"
+            alt="Rolex Explorer">
+          <div class="card-body">
+            <div class="model">Deepsea</div>
+            <div class="price">16,500€</div>
+            <div class="card-actions"><a class="btn-outline" href="#explorer">Ver Detalles</a></div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <main class="container">
-     
-      <section id="relojes" class="reveal">
-        <h3 style="font-family:'Playfair Display',serif;margin:0 0 .6rem">Modelos más vendidos</h3>
-        <div class="gallery">
-         
-          <article class="card-watch">
-            <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_900/v1/catalogue/2025/upright-c/m126610ln-0001.jpg" alt="Rolex Submariner">
-            <div class="card-body">
-              <div class="model">Submariner</div>
-              <div class="price">8,100€</div>
-              <div class="card-actions"><a class="btn-outline" href="#submariner">Ver Detalles</a></div>
-            </div>
-          </article>
 
-          
-          <article class="card-watch">
-            <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7/c_limit,w_1920/v1/catalogue/2025/upright-c/m52508-0007" alt="Rolex Daytona">
-            <div class="card-body">
-              <div class="model">1908</div>
-              <div class="price">12,500€</div>
-              <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
-            </div>
-          </article>
-          <article class="card-watch">
-            <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m126284rbr-0013.jpg" alt="Rolex Daytona">
-            <div class="card-body">
-              <div class="model">Datejust 36</div>
-              <div class="price">18,500€</div>
-              <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
-            </div>
-          </article>
-          <article class="card-watch">
-            <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m128348rbr-0036.jpg" alt="Rolex Daytona">
-            <div class="card-body">
-              <div class="model">Green lantern</div>
-              <div class="price">22,000€</div>
-              <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
-            </div>
-          </article>
-
-          <article class="card-watch">
-            <img src="https://images-cdn.ubuy.co.in/686ab4c497f0178e430a3403-pre-owned-rolex-6917-ladies-26mm.jpg" alt="Datejust">
-            <div class="card-body">
-              <div class="model">Demon</div>
-              <div class="price">32,800€</div>
-              <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
-            </div>
-          </article>
-
-          <article class="card-watch">
-            <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m128238-0088.jpg" alt="Oister">
-            <div class="card-body">
-              <div class="model">Date time</div>
-              <div class="price">19,500€</div>
-              <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
-            </div>
-          </article>
-
-          <article class="card-watch">
-            <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m336239-0003.jpg" alt="Sky luxury">
-            <div class="card-body">
-              <div class="model">Sky luxury</div>
-              <div class="price">38,200€</div>
-              <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
-            </div>
-          </article>
-          <article class="card-watch">
-            <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7/c_limit,w_1920/v1/catalogue/2025/upright-c/m126518ln-0014">
-            <div class="card-body">
-              <div class="model">Cosmograph</div>
-              <div class="price">22,500€</div>
-              <div class="card-actions"><a class="btn-outline" href="#daytona">Ver Detalles</a></div>
-            </div>
-          </article>
-      
-
-
-
-
-
-          
-          <article class="card-watch">
-            <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1200/v1/catalogue/2025/upright-c/m126300-0011" alt="Rolex Datejust">
-            <div class="card-body">
-              <div class="model">Datejust</div>
-              <div class="price">8000€</div>
-              <div class="card-actions"><a class="btn-outline" href="#datejust">Ver Detalles</a></div>
-            </div>
-          </article>
-
-         
-          <article class="card-watch">
-            <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m126710blro-0001.jpg" alt="Rolex GMT-Master">
-            <div class="card-body">
-              <div class="model">GMT-Master</div>
-              <div class="price">11,000€</div>
-              <div class="card-actions"><a class="btn-outline" href="#gmt">Ver Detalles</a></div>
-            </div>
-          </article>
-
-          
-          <article class="card-watch">
-            <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7-majesty/c_limit,w_1920/v1/catalogue/2025/upright-c/m126655-0005.jpg" alt="Rolex Yacht-Master">
-            <div class="card-body">
-              <div class="model">Yacht-Master</div>
-              <div class="price">14,000€</div>
-              <div class="card-actions"><a class="btn-outline" href="#yacht">Ver Detalles</a></div>
-            </div>
-          </article>
-
-       
-          <article class="card-watch">
-            <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7/c_limit,w_1920/v1/catalogue/2025/upright-c/m136668lb-0001" alt="Rolex Explorer">
-            <div class="card-body">
-              <div class="model">Deepsea</div>
-              <div class="price">16,500€</div>
-              <div class="card-actions"><a class="btn-outline" href="#explorer">Ver Detalles</a></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-    
-      <section class="collections reveal" style="margin-top:1.5rem">
-        <div class="col-card">
-          <img src="https://fintualist.com/content/images/2023/06/Rolex-y-Roland-Garros-2.jpg" alt="Hombres">
-          <div class="label">Tenis</div>
-        </div>
-        <div class="col-card">
-          <img src="https://monochrome-watches.com/app/uploads/2016/04/Watches-and-Formula-1-Rolex-official-Timekeeper.jpg" alt="Mujeres">
-          <div class="label">F1</div>
-        </div>
-        <div class="col-card">
-          <img src="https://africanamericangolfersdigest.com/wp-content/uploads/2023/06/rolex_golf.jpg" alt="Dive">
-          <div class="label">Golf</div>
-        </div>
-        <div class="col-card">
-          <img src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/c_limit,w_1920/v1756810447/rolexcom/accessories/landing/rolex-accessories-rolex-crown-cufflinks-dyptique-rolexcufflinks_2403jva_001" alt="Chronograph">
-          <div class="label">Accesorios</div>
-        </div>
-      </section>
-    </main>
-
-  
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <div> <a href="#relojes" style="color:#ddd">Soporte técnico</a> · <a href="#contacto" style="color:#ddd">Contacto</a></div>
-        <div class="socials">
-          <a href="#">Instagram</a>
-          <a href="#">Youtube</a>
-          <a href="#">Twitter</a>
-           <a href="#">Facebook</a>
-          <a href="#">Últimas noticias</a>
-          <a href="#">Historia marca</a>
-        </div>
-        <div style="opacity:.7">© 2026 Rolex-Álvaro</div>
+    <section class="collections reveal" style="margin-top:1.5rem">
+      <div class="col-card">
+        <img src="https://fintualist.com/content/images/2023/06/Rolex-y-Roland-Garros-2.jpg" alt="Hombres">
+        <div class="label">Tenis</div>
       </div>
-    </footer>
+      <div class="col-card">
+        <img
+          src="https://monochrome-watches.com/app/uploads/2016/04/Watches-and-Formula-1-Rolex-official-Timekeeper.jpg"
+          alt="Mujeres">
+        <div class="label">F1</div>
+      </div>
+      <div class="col-card">
+        <img src="https://africanamericangolfersdigest.com/wp-content/uploads/2023/06/rolex_golf.jpg" alt="Dive">
+        <div class="label">Golf</div>
+      </div>
+      <div class="col-card">
+        <img
+          src="https://media.rolex.com/image/upload/q_auto:eco/f_auto/c_limit,w_1920/v1756810447/rolexcom/accessories/landing/rolex-accessories-rolex-crown-cufflinks-dyptique-rolexcufflinks_2403jva_001"
+          alt="Chronograph">
+        <div class="label">Accesorios</div>
+      </div>
+    </section>
+  </main>
 
-    <script>
-   
-      (function(){
-      
-        const io = new IntersectionObserver((entries)=>{
-          entries.forEach(e=>{
-            if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
-          });
-        },{threshold:0.12});
 
-        document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div> <a href="#relojes" style="color:#ddd">Soporte técnico</a> · <a href="#contacto"
+          style="color:#ddd">Contacto</a></div>
+      <div class="socials">
+        <a href="#">Instagram</a>
+        <a href="#">Youtube</a>
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+        <a href="#">Últimas noticias</a>
+        <a href="#">Historia marca</a>
+      </div>
+      <div style="opacity:.7">© 2026 Rolex-Álvaro</div>
+    </div>
+  </footer>
 
-    
-        const hero = document.querySelector('.hero[data-parallax]');
-        const vid = hero && hero.querySelector('video');
-        if(hero && vid){
-          let last=0;
-          window.addEventListener('scroll',()=>{
-            const rect = hero.getBoundingClientRect();
-            const winH = window.innerHeight || document.documentElement.clientHeight;
-            const pct = Math.max(0, Math.min(1, 1 - (rect.top / winH)));
-          
-            const scale = 1 + (pct * 0.03);
-            vid.style.transform = `scale(${scale})`;
-          },{passive:true});
-        }
+  <script>
 
-        document.querySelectorAll('nav a, .cta-buy, .btn-outline, .btn').forEach(el=>{
-          el.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') el.click(); });
+    (function () {
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
         });
-      })();
-    </script>
-  </body>
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+
+      const hero = document.querySelector('.hero[data-parallax]');
+      const vid = hero && hero.querySelector('video');
+      if (hero && vid) {
+        let last = 0;
+        window.addEventListener('scroll', () => {
+          const rect = hero.getBoundingClientRect();
+          const winH = window.innerHeight || document.documentElement.clientHeight;
+          const pct = Math.max(0, Math.min(1, 1 - (rect.top / winH)));
+
+          const scale = 1 + (pct * 0.03);
+          vid.style.transform = `scale(${scale})`;
+        }, { passive: true });
+      }
+
+      document.querySelectorAll('nav a, .cta-buy, .btn-outline, .btn').forEach(el => {
+        el.addEventListener('keydown', (e) => { if (e.key === 'Enter') el.click(); });
+      });
+    })();
+  </script>
+</body>
+
 </html>
